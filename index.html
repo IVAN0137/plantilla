@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabañas Encantadas - Tu Escape Perfecto</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo">
+                <img src="https://via.placeholder.com/150x50?text=Cabañas+Encantadas" alt="Logo de Cabañas Encantadas">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#cabanas">Nuestras Cabañas</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+                <li><a href="#contacto">Reserva</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1>Cabañas Encantadas</h1>
+                <p>Tu escape perfecto en medio de la naturaleza</p>
+                <a href="#cabanas" class="cta-button">Descubre Nuestras Cabañas</a>
+            </div>
+        </section>
+
+        <section id="cabanas">
+            <h2>Nuestras Cabañas</h2>
+            <div class="cabanas-grid">
+                <div class="cabana">
+                    <img src="https://source.unsplash.com/800x600/?wooden+cabin" alt="Cabaña del Bosque">
+                    <h3>Cabaña del Bosque</h3>
+                    <p>Sumérgete en la tranquilidad del bosque</p>
+                    <button class="btn-detalles" data-cabana="bosque">Ver Detalles</button>
+                </div>
+                <div class="cabana">
+                    <img src="https://source.unsplash.com/800x600/?lake+cabin" alt="Cabaña del Lago">
+                    <h3>Cabaña del Lago</h3>
+                    <p>Disfruta de vistas impresionantes al lago</p>
+                    <button class="btn-detalles" data-cabana="lago">Ver Detalles</button>
+                </div>
+                <div class="cabana">
+                    <img src="https://source.unsplash.com/800x600/?mountain+cabin" alt="Cabaña de Montaña">
+                    <h3>Cabaña de Montaña</h3>
+                    <p>Experimenta la majestuosidad de las alturas</p>
+                    <button class="btn-detalles" data-cabana="montana">Ver Detalles</button>
+                </div>
+                <div class="cabana">
+                    <img src="https://source.unsplash.com/800x600/?luxury+cabin" alt="Cabaña de Lujo">
+                    <h3>Cabaña de Lujo</h3>
+                    <p>Vive el confort en medio de la naturaleza</p>
+                    <button class="btn-detalles" data-cabana="lujo">Ver Detalles</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios">
+            <h2>Nuestros Servicios</h2>
+            <div class="servicios-grid">
+                <div class="servicio">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Restaurante Gourmet</h3>
+                    <p>Deléitate con nuestra cocina local e internacional</p>
+                </div>
+                <div class="servicio">
+                    <i class="fas fa-spa"></i>
+                    <h3>Spa Natural</h3>
+                    <p>Relájate con nuestros tratamientos orgánicos</p>
+                </div>
+                <div class="servicio">
+                    <i class="fas fa-hiking"></i>
+                    <h3>Excursiones Guiadas</h3>
+                    <p>Explora la naturaleza con nuestros expertos locales</p>
+                </div>
+                <div class="servicio">
+                    <i class="fas fa-campground"></i>
+                    <h3>Área de Camping</h3>
+                    <p>Vive la experiencia completa de la naturaleza</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="ubicacion">
+            <h2>Nuestra Ubicación</h2>
+            <div class="ubicacion-content">
+                <div id="map" class="mapa"></div>
+                <div class="direccion">
+                    <h3>Cómo Llegar</h3>
+                    <p>Estamos ubicados en el corazón del Bosque Encantado, a solo 2 horas de la ciudad capital.</p>
+                    <p>Dirección: Camino del Bosque km 5, Valle Encantado, Región de los Sueños</p>
+                    <button id="btn-como-llegar" class="btn-como-llegar">Obtener Indicaciones</button>
+                </div>
+            </div>
+        </section>  
+
+        <section id="contacto">
+            <h2>Reserva Tu Escape</h2>
+            <form id="reservaForm">
+                <input type="text" id="nombre" placeholder="Nombre completo" required>
+                <input type="email" id="email" placeholder="Correo electrónico" required>
+                <input type="tel" id="telefono" placeholder="Teléfono" required>
+                <select id="cabana" required>
+                    <option value="">Selecciona una cabaña</option>
+                    <option value="Cabaña del Bosque">Cabaña del Bosque</option>
+                    <option value="Cabaña del Lago">Cabaña del Lago</option>
+                    <option value="Cabaña de Montaña">Cabaña de Montaña</option>
+                    <option value="Cabaña de Lujo">Cabaña de Lujo</option>
+                </select>
+                <input type="date" id="fechaLlegada" placeholder="Fecha de llegada" required>
+                <input type="date" id="fechaSalida" placeholder="Fecha de salida" required>
+                <textarea id="mensaje" placeholder="Mensaje o requerimientos especiales"></textarea>
+                <button type="submit">Reservar por WhatsApp</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Cabañas Encantadas</h3>
+                <p>Tu escape perfecto en medio de la naturaleza.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#cabanas">Nuestras Cabañas</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#ubicacion">Ubicación</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Email: info@cabanasencantadas.com</p>
+                <p>Teléfono: +1 234 567 890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="redes-sociales">
+                    <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Cabañas Encantadas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <img id="modal-image" src="/placeholder.svg" alt="Imagen de la cabaña">
+            <p id="modal-description"></p>
+            <ul id="modal-amenities"></ul>
+            <p id="modal-price"></p>
+            <button id="modal-reserva" class="cta-button">Reservar Ahora</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
