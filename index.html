@@ -108,21 +108,52 @@
 
         <section id="contacto">
             <h2>Reserva Tu Escape</h2>
-            <form id="reservaForm">
-                <input type="text" id="nombre" placeholder="Nombre completo" required>
-                <input type="email" id="email" placeholder="Correo electrónico" required>
-                <input type="tel" id="telefono" placeholder="Teléfono" required>
-                <select id="cabana" required>
-                    <option value="">Selecciona una cabaña</option>
-                    <option value="Cabaña del Bosque">Cabaña del Bosque</option>
-                    <option value="Cabaña del Lago">Cabaña del Lago</option>
-                    <option value="Cabaña de Montaña">Cabaña de Montaña</option>
-                    <option value="Cabaña de Lujo">Cabaña de Lujo</option>
-                </select>
-                <input type="date" id="fechaLlegada" placeholder="Fecha de llegada" required>
-                <input type="date" id="fechaSalida" placeholder="Fecha de salida" required>
-                <textarea id="mensaje" placeholder="Mensaje o requerimientos especiales"></textarea>
-                <button type="submit">Reservar por WhatsApp</button>
+            <form id="reservaForm" class="reservation-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <span class="error-message" id="nombre-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                    <span class="error-message" id="telefono-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="cabana">Selecciona una cabaña</label>
+                    <select id="cabana" name="cabana" required>
+                        <option value="">Elige una opción</option>
+                        <option value="Cabaña del Bosque">Cabaña del Bosque</option>
+                        <option value="Cabaña del Lago">Cabaña del Lago</option>
+                        <option value="Cabaña de Montaña">Cabaña de Montaña</option>
+                        <option value="Cabaña de Lujo">Cabaña de Lujo</option>
+                    </select>
+                    <span class="error-message" id="cabana-error"></span>
+                </div>
+                <div class="form-group date-group">
+                    <div>
+                        <label for="fechaLlegada">Fecha de llegada</label>
+                        <input type="date" id="fechaLlegada" name="fechaLlegada" required>
+                        <span class="error-message" id="fechaLlegada-error"></span>
+                    </div>
+                    <div>
+                        <label for="fechaSalida">Fecha de salida</label>
+                        <input type="date" id="fechaSalida" name="fechaSalida" required>
+                        <span class="error-message" id="fechaSalida-error"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje o requerimientos especiales</label>
+                    <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="submit-btn">Reservar por WhatsApp</button>
+                </div>
             </form>
         </section>
     </main>

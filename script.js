@@ -56,31 +56,107 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const handleReservaForm = () => {
         const form = document.getElementById('reservaForm');
+        const fields = ['nombre', 'email', 'telefono', 'cabana', 'fechaLlegada', 'fechaSalida'];
+
+        const showError = (field, message) => {
+            const formGroup = field.parentElement;
+            const errorElement = formGroup.querySelector('.error-message');
+            formGroup.classList.add('error');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        };
+
+        const hideError = (field) => {
+            const formGroup = field.parentElement;
+            const errorElement = formGroup.querySelector('.error-message');
+            formGroup.classList.remove('error');
+            errorElement.style.display = 'none';
+        };
+
+        const validateField = (field) => {
+            if (field.value.trim() === '') {
+                showError(field, 'Este campo es requerido');
+                return false;
+            }
+
+            if (field.type === 'email' && !/\S+@\S+\.\S+/.test(field.value)) {
+                showError(field, 'Por favor, introduce un email válido');
+                return false;
+            }
+
+            if (field.id === 'telefono' && !/^\d{9,}$/.test(field.value)) {
+                showError(field, 'Por favor, introduce un número de teléfono válido');
+                return false;
+            }
+
+            hideError(field);
+            return true;
+        };
+
+        fields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            field.addEventListener('blur', () => validateField(field));
+            field.addEventListener('input', () => validateField(field));
+        });
+
+        const validateDates = () => {
+            const llegada = new Date(document.getElementById('fechaLlegada').value);
+            const salida = new Date(document.getElementById('fechaSalida').value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if (llegada < today) {
+                showError(document.getElementById('fechaLlegada'), 'La fecha de llegada no puede ser en el pasado');
+                return false;
+            }
+
+            if (salida <= llegada) {
+                showError(document.getElementById('fechaSalida'), 'La fecha de salida debe ser posterior a la fecha de llegada');
+                return false;
+            }
+
+            hideError(document.getElementById('fechaLlegada'));
+            hideError(document.getElementById('fechaSalida'));
+            return true;
+        };
+
+        document.getElementById('fechaLlegada').addEventListener('change', validateDates);
+        document.getElementById('fechaSalida').addEventListener('change', validateDates);
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            const nombre = document.getElementById('nombre').value;
-            const email = document.getElementById('email').value;
-            const telefono = document.getElementById('telefono').value;
-            const cabana = document.getElementById('cabana').value;
-            const fechaLlegada = document.getElementById('fechaLlegada').value;
-            const fechaSalida = document.getElementById('fechaSalida').value;
-            const mensaje = document.getElementById('mensaje').value;
+            let isValid = true;
+            fields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!validateField(field)) {
+                    isValid = false;
+                }
+            });
 
-            const whatsappMessage = `Hola, me gustaría hacer una reserva:
-            Nombre: ${nombre}
-            Email: ${email}
-            Teléfono: ${telefono}
-            Cabaña: ${cabana}
-            Fecha de llegada: ${fechaLlegada}
-            Fecha de salida: ${fechaSalida}
-            Mensaje: ${mensaje}`;
+            if (!validateDates()) {
+                isValid = false;
+            }
 
-            const encodedMessage = encodeURIComponent(whatsappMessage);
-            const whatsappUrl = `https://wa.me/1234567890?text=${encodedMessage}`; // Reemplaza 1234567890 con tu número de WhatsApp
+            if (isValid) {
+                const formData = new FormData(form);
+                const reservaData = Object.fromEntries(formData.entries());
 
-            window.open(whatsappUrl, '_blank');
-            form.reset();
+                const whatsappMessage = `Hola, me gustaría hacer una reserva:
+                Nombre: ${reservaData.nombre}
+                Email: ${reservaData.email}
+                Teléfono: ${reservaData.telefono}
+                Cabaña: ${reservaData.cabana}
+                Fecha de llegada: ${reservaData.fechaLlegada}
+                Fecha de salida: ${reservaData.fechaSalida}
+                Mensaje: ${reservaData.mensaje}`;
+
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+                const whatsappUrl = `https://wa.me/524412822828?text=${encodedMessage}`; // Reemplaza 1234567890 con tu número de WhatsApp
+
+                window.open(whatsappUrl, '_blank');
+                form.reset();
+            }
         });
     }
 

@@ -285,51 +285,94 @@ h2 {
 }
 
 /* Formulario de Reserva */
-#reservaForm {
+.reservation-form {
     max-width: 600px;
     margin: 0 auto;
-    display: grid;
-    gap: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-#reservaForm input,
-#reservaForm select,
-#reservaForm textarea {
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 50px;
-    transition: all 0.3s ease;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-#reservaForm input:focus,
-#reservaForm select:focus,
-#reservaForm textarea:focus {
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
 }
 
-#reservaForm textarea {
-    border-radius: 15px;
+.form-group textarea {
     resize: vertical;
 }
 
-#reservaForm button {
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: 12px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.date-group {
+    display: flex;
+    gap: 20px;
 }
 
-#reservaForm button:hover {
+.date-group > div {
+    flex: 1;
+}
+
+.error-message {
+    color: #ff3860;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.submit-btn:hover {
     background-color: var(--accent-color);
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+/* Estilos para campos con error */
+.form-group.error input,
+.form-group.error select {
+    border-color: #ff3860;
+}
+
+.form-group.error .error-message {
+    display: block;
+}
+
 
 /* Footer */
 footer {
@@ -562,6 +605,14 @@ footer {
     .mapa {
         height: 300px;
     }
+    .reservation-form {
+        padding: 20px;
+    }
+
+    .date-group {
+        flex-direction: column;
+        gap: 0;
+    }
 }
 
 @keyframes navLinkFade {
@@ -576,7 +627,7 @@ footer {
 }
 
 /* Estilos adicionales para mejorar la apariencia */
-.cabana, .servicio, .ubicacion-content, #reservaForm {
+.cabana, .servicio, .ubicacion-content, .reservation-form {
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
@@ -615,4 +666,3 @@ input, select, textarea, button {
     scroll-margin-top: 80px; /* Ajusta este valor según la altura de tu barra de navegación */
     background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://source.unsplash.com/1600x900/?contact');
 }
-
